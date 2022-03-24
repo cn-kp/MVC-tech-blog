@@ -1,0 +1,22 @@
+[
+    {
+      "title": "Random post 1",
+      "text": "dummy post 1: hello world"
+    },
+    {
+      "title": "Random post 2",
+      "text": "This is the second post. short text"
+    },
+    {
+      "title": "Random post 3.",
+      "text": "very long text very long text very long text very long text very long text very long text very long text very long text very long text very long text very long text very long text"
+    },
+    {
+      "title": "Random post 4",
+      "text": "filler, filler, filler, filler, filler, filler, filler"
+    },
+    {
+      "title": "Random text 5",
+      "text": "Nice."
+    }
+  ]

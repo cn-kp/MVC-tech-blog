@@ -1,34 +1,23 @@
 <div id="profileDetails">
-    <h5 id="profileName" class="profileTag">NAME:</h5>
-    <p id="profileP" class="profileOutput">{{userName}}</p>
-    <h5 id="profileEmail" class="profileTag">EMAIL:</h5>
-    <p id="profileP" class="profileOutput">{{userEmail}}</p>
-</div>
-            
-<button class="itemBtn listFromProfile" id="profileList" type="submit">List Item</button>
-
-<div id="userProdList">
-{{#each product}}
-		<div class="outer">
-			<div class="itemContent">
-                <img class="itemListImg" id="img_{{this.id}}" src="{{this.image_link}}" alt="{{this.name}}">
-				<h1 class="itemH1" id="name_{{this.id}}" >{{this.name}}</h1>
-                
-				<p class="itemBoxP" id="desc_{{this.id}}">{{this.description}}</p>
-
-                <span class="creditGreen"></span><h5 class="itemH5" id="price_{{this.id}}">{{this.price}}</h5>
-				
-				<button type="button" data-value="{{this.id}}" class="itemBtn userItemBtn updateBtn">Update</button>
-				<button type="button" data-value="{{this.id}}" class="itemBtn userItemBtn deleteBtn">Delete</button>
-				
-			</div>
-		</div>
-{{/each}}
+  <h5 id="profileName" class="profileTag">NAME:</h5>
+  <p id="profileP" class="profileOutput">{{userName}}</p>
+  <h5 id="profileEmail" class="profileTag">EMAIL:</h5>
+  <p id="profileP" class="profileOutput">{{userEmail}}</p>
 </div>
 
+<button class="itemBtn listFromProfile" id="profileList" type="submit">Add Post</button>
 
+<div id="userPostList">
+    {{#each post}}
+      <div class="card">
+        <h2>{{this.title}}</h2>
+        <h5>{{this.userName}}, {{this.date_created}}</h5>
+        <p>{{this.text}}</p>
+      </div>
+    {{/each}}
+</div>
 
-<!-- The Modal -->
+{{! <!-- New Post Modal -->
 <div id="myModal" class="modal">
     <!-- Modal content -->
     <div class="modal-content">
@@ -49,10 +38,10 @@
         <button id="confirm" class="itemBtn">Confirm</button><button id="canx" class="itemBtn">Cancel</button>
     </div>
 
-</div>
+</div> }}
 <!-- ....................... -->
 
-<!-- The Modal -->
+{{! <!-- Update Post Modal -->
 <div id="myModal2" class="modal">
     <!-- Modal content -->
     <div class="modal-content">
@@ -72,4 +61,4 @@
         <br/><br/>
         <button id="confirm2"  class="itemBtn">Update</button><button id="canx2" class="itemBtn">Cancel</button>
     </div>
-</div>
+</div>  }}

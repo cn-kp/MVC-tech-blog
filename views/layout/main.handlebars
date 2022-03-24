@@ -10,6 +10,7 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
+    <script src="https://kit.fontawesome.com/4f24a0e7d7.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/css/mainpage.css" />
   </head>
 
@@ -31,18 +32,19 @@
             <div>
                 <h1 class ="title">Tech Blog</h1>
             </div>
-            {{#if loggedIn}}
+            {{!-- {{#if loggedIn}} --}}
           <button href ="/" class="btn btn-outline-success me-2" id="homeBtn" type="button">Home Page</button>
-          <button href="/dashborad" class="btn btn-outline-success me-2" id="dashBtn" type="button">Dashboard</button>
+          <button href="/dashboard" class="btn btn-outline-success me-2" id="dashBtn" type="button">Dashboard</button>
           <button class="btn btn-sm btn-outline-secondary" id="logOutBtn" type="button">Log Out</button>
-            {{else}}
+            {{!-- {{else}} --}}
             <button href ="/" class="btn btn-outline-success me-2" id="homeBtn" type="button">Home Page</button>
           <button href="/dashborad" class="btn btn-outline-success me-2" id="dashBtn" type="button">Dashboard</button>
           <button href="/login" class="btn btn-sm btn-outline-secondary" id="logInBtn" type="button">Log In</button>
         </form>
       </nav>
-      
-      <div>{{{body}}}</div>
+        {{!-- {{/if}} --}}
+
+      <div id = "main">{{{body}}}</div>
 
 </body>
 </html>
