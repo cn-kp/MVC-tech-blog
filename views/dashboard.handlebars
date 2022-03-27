@@ -5,60 +5,61 @@
   <p id="profileP" class="profileOutput">{{userEmail}}</p>
 </div>
 
-<button class="itemBtn listFromProfile" id="profileList" type="submit">Add Post</button>
+<button id="addPost" type="button">Add Post</button>
 
 <div id="userPostList">
     {{#each post}}
       <div class="card">
-        <h2>{{this.title}}</h2>
-        <h5>{{this.userName}}, {{this.date_created}}</h5>
-        <p>{{this.text}}</p>
+        <h2 id="title_{{this.id}}">{{this.title}}</h2>
+        <hr>
+        <h5>{{this.name}}, {{this.date_created}}</h5>
+        <p id="text_{{this.id}}">{{this.text}}</p>
+       
+        <button class="updateBtn" data-value="{{this.id}}" type="submit">Update post</button>
+        <button class="deleteBtn" data-value="{{this.id}}" type="submit">Delete post</button>
       </div>
+      <hr>
+    <h3>Comments</h3>
+      {{#each this.comments}}
+            <p>{{this.text}} commented by {{this.user.name}}</p>
+        {{/each}}
     {{/each}}
 </div>
 
-{{! <!-- New Post Modal -->
+<!-- New Post Modal -->
 <div id="myModal" class="modal">
     <!-- Modal content -->
     <div class="modal-content">
         <div id = "container">
             <form id = "form">
-            <h2 class="title">Create your new Listing</h2>
-            <label for="name" class ="name listLabel">Item Name:</label>
-            <input type="text" id="name" name="name" class="listInput" placeholder="Item Name" >
-            <label for="price" class="price listLabel">Item Price:</label>
-            <input type="text" id="price" name="price" class="listInput" placeholder="Sell Price">
-            <label for="description" class ="description listLabel">Description:</label>
-            <input type="text" id="description" name="description" class="listInput" placeholder="Description">
-            <label for="image_link" class ="image_link listLabel">Image URL:</label>
-            <input type="text" id="image_link" name="image_link" class="listInput" placeholder="Image URL">
+            <h2 class="title">Create your new Post</h2>
+            <label for="title" class ="name listLabel">Post Title:</label>
+            <input type="text" id="title" name="title" class="listInput" placeholder="Post title" >
+            <label for="text" class ="text listLabel">Post Text</label>
+            <input type="text" id="text" name="text" class="listInput" placeholder="Post text">
             </form>
         </div>
         <br/><br/>
         <button id="confirm" class="itemBtn">Confirm</button><button id="canx" class="itemBtn">Cancel</button>
     </div>
 
-</div> }}
+</div>
 <!-- ....................... -->
 
-{{! <!-- Update Post Modal -->
+<!-- Update Post Modal -->
 <div id="myModal2" class="modal">
     <!-- Modal content -->
     <div class="modal-content">
         <div id = "container2">
             <form id = "form2">
-            <h2 class="title">Update Listing</h2>
-            <label for="name" class ="name listLabel">Item Name:</label>
-            <input type="text" id="name2" name="name" class="listInput" placeholder="Item Name" >
-            <label for="price" class="price listLabel">Item Price:</label>
-            <input type="text" id="price2" name="price" class="listInput" placeholder="Sell Price">
-            <label for="description" class ="description listLabel">Description:</label>
-            <input type="text" id="description2" name="description" class="listInput" placeholder="Description">
-            <label for="image_link" class ="image_link listLabel">Image URL:</label>
-            <input type="text" id="image_link2" name="image_link" class="listInput" placeholder="Image URL">
+            <h2 class="title">Update Post</h2>
+            <label for="title" class ="title listLabel">Title</label>
+            <input type="text" id="title2" name="title" class="listInput" placeholder="Post Title" >
+            <label for="text" class="text listLabel">Post Text</label>
+            <input type="text" id="text2" name="text" class="listInput" placeholder="Sell Price">
             </form>
         </div>
         <br/><br/>
         <button id="confirm2"  class="itemBtn">Update</button><button id="canx2" class="itemBtn">Cancel</button>
     </div>
-</div>  }}
+</div>

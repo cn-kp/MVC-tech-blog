@@ -4,6 +4,7 @@ const Auth = require("../utils/auth");
 
 router.get("/", async (req, res) => {
   try {
+    console.log(req.session)
     const postData = await Post.findAll({
       include: [
         {
@@ -12,7 +13,6 @@ router.get("/", async (req, res) => {
         },
       ],
     });
-
     const post = postData.map((post) =>
       post.get({
         plain: true,
@@ -22,6 +22,8 @@ router.get("/", async (req, res) => {
     res.render("homepage", {
       post,
       logged_in: req.session.logged_in,
+      userName: req.session.userName,
+      userEmail: req.session.userEmail,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -58,17 +60,7 @@ router.get("/post/:id", async (req, res) => {
 
 router.get("/dashboard", Auth, async (req, res) => {
   try {
-    const userData = await User.findByPk(req.session.user_id, {
-      attributes: {
-        exclude: ["password"],
-      },
-      include: [
-        {
-          model: Post,
-        },
-      ],
-    });
-    const postData = Post.findAll({
+    const postData = await Post.findAll({
       where: {
         user_id: req.session.user_id,
       },
@@ -77,35 +69,30 @@ router.get("/dashboard", Auth, async (req, res) => {
           model: Comment,
           include: {
             model: User,
-            attributes: ["name", "email"],
+            attributes: ["name"],
           },
         },
       ],
     });
+    // console.log(postData.comments)
     const post = postData.map((post) => post.get({ plain: true }));
+    console.log(post[0].comments)
     res.render("dashboard", {
       post,
-      loggedIn: true,
-    });
-    const user = userData.get({
-      plain: true,
-    });
-
-    res.render("dashboard", {
-      ...user,
-      ...post,
       logged_in: true,
       userName: req.session.userName,
       userEmail: req.session.userEmail,
     });
   } catch (err) {
+    console.log(err)
     res.status(500).json(err);
   }
 });
 
 router.get("/login", (req, res) => {
   if (req.session.logged_in) {
-    res.redirect("/dashboard");
+    //or redirect to home
+    res.redirect("/");
     return;
   }
 

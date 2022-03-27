@@ -4,11 +4,6 @@ const Auth = require("../../utils/auth");
 
 router.get("/:id", Auth, async (req, res) => {
     try {
-      const userData = await User.findByPk(req.session.user_id, {
-        attributes: {
-          exclude: ["password"],
-        },
-      });
       const postData = Post.findAll({
         where: {
           user_id: req.session.user_id,
@@ -27,15 +22,11 @@ router.get("/:id", Auth, async (req, res) => {
       res.render("dashboard", {
         post,
         loggedIn: true,
+        userName: req.session.userName,
+        userEmail: req.session.userEmail,
       });
       const user = userData.get({
         plain: true,
-      });
-  
-      res.render("dashboard", {
-        ...user,
-        ...post,
-        logged_in: true,
       });
     } catch (err) {
       res.status(500).json(err);
@@ -83,7 +74,7 @@ router.get("/:id", Auth, async (req, res) => {
         }
       );
   
-      res.status(200).json(updateProduct);
+      res.status(200).json(updatePost);
     } catch (err) {
       res.status(400).json(err);
     }
