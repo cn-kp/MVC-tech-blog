@@ -18,7 +18,7 @@ router.get("/", async (req, res) => {
         plain: true,
       })
     );
-
+      console.log(post)
     res.render("homepage", {
       post,
       logged_in: req.session.logged_in,
@@ -74,9 +74,8 @@ router.get("/dashboard", Auth, async (req, res) => {
         },
       ],
     });
-    // console.log(postData.comments)
     const post = postData.map((post) => post.get({ plain: true }));
-    console.log(post[0].comments)
+    console.log(post.comments)
     res.render("dashboard", {
       post,
       logged_in: true,

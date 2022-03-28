@@ -1,65 +1,105 @@
 <div id="profileDetails">
-  <h5 id="profileName" class="profileTag">NAME:</h5>
-  <p id="profileP" class="profileOutput">{{userName}}</p>
-  <h5 id="profileEmail" class="profileTag">EMAIL:</h5>
-  <p id="profileP" class="profileOutput">{{userEmail}}</p>
+  <h5 id="profileName" class="profileTag">NAME: {{userName}}</h5>
+  <h5 id="profileEmail" class="profileTag">EMAIL: {{userEmail}}</h5>
 </div>
 
-<button id="addPost" type="button">Add Post</button>
+<br>
+<h2>All your Blog Posts</h2>
+<br>
+<div class="addPostBtnContainer">
+  <button id="addPost" type="button">Add New Post</button>
+  <br>
+</div>
 
 <div id="userPostList">
-    {{#each post}}
-      <div class="card">
-        <h2 id="title_{{this.id}}">{{this.title}}</h2>
-        <hr>
-        <h5>{{this.name}}, {{this.date_created}}</h5>
-        <p id="text_{{this.id}}">{{this.text}}</p>
-       
-        <button class="updateBtn" data-value="{{this.id}}" type="submit">Update post</button>
-        <button class="deleteBtn" data-value="{{this.id}}" type="submit">Delete post</button>
-      </div>
+  {{#each post}}
+  <br>
+    <div class="card" id ="userPost">
+      <h2 id="title_{{this.id}}">{{this.title}}</h2>
       <hr>
-    <h3>Comments</h3>
-      {{#each this.comments}}
-            <p>{{this.text}} commented by {{this.user.name}}</p>
-        {{/each}}
+      <h6>created on: {{this.date_created}}</h6>
+      <p id="text_{{this.id}}">{{this.text}}</p>
+
+      <button class="updateBtn" data-value="{{this.id}}" type="submit">Update
+        post</button>
+      <button class="deleteBtn" data-value="{{this.id}}" type="submit">Delete
+        post</button>
+    </div>
+    <hr>
+    {{#each this.comments}}
+    <h3>Comments to above post</h3>
+      <h7>{{this.text}}</h7>
+      <p>commented by: {{this.user.name}}</p>
+      <br>
     {{/each}}
+    <hr>
+  {{/each}}
 </div>
 
 <!-- New Post Modal -->
 <div id="myModal" class="modal">
-    <!-- Modal content -->
-    <div class="modal-content">
-        <div id = "container">
-            <form id = "form">
-            <h2 class="title">Create your new Post</h2>
-            <label for="title" class ="name listLabel">Post Title:</label>
-            <input type="text" id="title" name="title" class="listInput" placeholder="Post title" >
-            <label for="text" class ="text listLabel">Post Text</label>
-            <input type="text" id="text" name="text" class="listInput" placeholder="Post text">
-            </form>
-        </div>
-        <br/><br/>
-        <button id="confirm" class="itemBtn">Confirm</button><button id="canx" class="itemBtn">Cancel</button>
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div id="container">
+      <form id="form">
+        <h2 class="title">Create your new Post</h2>
+        <label for="title" class="name listLabel">Post Title:</label>
+        <input
+          type="text"
+          id="title"
+          name="title"
+          class="listInput"
+          placeholder="Post title"
+        />
+        <label for="text" class="text listLabel">Post Text</label>
+        <input
+          type="text"
+          id="text"
+          name="text"
+          class="listInput"
+          placeholder="Post text"
+        />
+      </form>
     </div>
+    <br /><br />
+    <button id="confirm" class="itemBtn">Confirm</button><button
+      id="canx"
+      class="itemBtn"
+    >Cancel</button>
+  </div>
 
 </div>
 <!-- ....................... -->
 
 <!-- Update Post Modal -->
 <div id="myModal2" class="modal">
-    <!-- Modal content -->
-    <div class="modal-content">
-        <div id = "container2">
-            <form id = "form2">
-            <h2 class="title">Update Post</h2>
-            <label for="title" class ="title listLabel">Title</label>
-            <input type="text" id="title2" name="title" class="listInput" placeholder="Post Title" >
-            <label for="text" class="text listLabel">Post Text</label>
-            <input type="text" id="text2" name="text" class="listInput" placeholder="Sell Price">
-            </form>
-        </div>
-        <br/><br/>
-        <button id="confirm2"  class="itemBtn">Update</button><button id="canx2" class="itemBtn">Cancel</button>
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div id="container2">
+      <form id="form2">
+        <h2 class="title">Update Post</h2>
+        <label for="title" class="title listLabel">Title</label>
+        <input
+          type="text"
+          id="title2"
+          name="title"
+          class="listInput"
+          placeholder="Post Title"
+        />
+        <label for="text" class="text listLabel">Post Text</label>
+        <input
+          type="text"
+          id="text2"
+          name="text"
+          class="listInput"
+          placeholder="Sell Price"
+        />
+      </form>
     </div>
+    <br /><br />
+    <button id="confirm2" class="itemBtn">Update</button><button
+      id="canx2"
+      class="itemBtn"
+    >Cancel</button>
+  </div>
 </div>

@@ -1,26 +1,42 @@
-
+<hr>
 {{#each post}}
-<div class="card">
-                  <h2>{{this.title}}</h2>
-                  <h5>{{this.name}}, {{this.date_created}}</h5>
-                  {{!-- <div class="img" style="height:200px;"></div> --}}
-                  <p>{{this.text}}</p>
-                  <button data-value="{{this.id}}" class="addCommentBtn" id="addComment" type="button">Add Comment</button>
-                </div>
+  <div class="card" id="display-post">
+    <h2>{{this.title}}</h2>
+    <h6>posted by: {{this.user.name}}, on: {{this.date_created}}</h5>
+    {{! <div class="img" style="height:200px;"></div> }}
+    <p>{{this.text}}</p>
+    <button
+      data-value="{{this.id}}"
+      class="addCommentBtn"
+      id="addComment"
+      type="button"
+    >Add Comment</button>
+    <br>
+  </div>
+  <br>
 {{/each}}
 
+<hr>
 <div id="myModal3" class="modal">
-    <!-- Modal content -->
-    <div class="modal-content">
-        <div id = "container3">
-            <form id = "form2">
-            <h2 class="title">Add a Comment</h2>
-            <input type="text" id="comment" name="text" class="listInput" placeholder="Comment" >
-            <label for="text" class="comment listLabel">comment</label>
-            </form>
-        </div>
-        <br/><br/>
-        <button id="confirm2"  class="commentBtn">Comment</button><button id="canx3" class="itemBtn">Cancel</button>
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div id="container3">
+      <form id="form2">
+        <h2 class="title">Add a Comment</h2>
+        <br>
+        <input
+          type="text"
+          id="comment"
+          name="text"
+          class="commentInput"
+          placeholder="Comment"
+        />
+      </form>
     </div>
+    <button id="confirm2" class="commentBtn">Comment</button><button
+      id="canx3"
+      class="itemBtn"
+    >Cancel</button>
+  </div>
 </div>
-<script src = "/js/homepage.js"></script>
+<script src="/js/homepage.js"></script>
