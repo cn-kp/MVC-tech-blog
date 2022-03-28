@@ -2,7 +2,7 @@
 
 ## Deployment
 * [GitHub Repository](https://github.com/cn-kp/MVC-tech-blog)
-* [Heroku Deployment]()
+* [Heroku Deployment](https://mvctechblogcnkp.herokuapp.com/)
 
 ## Description
 
