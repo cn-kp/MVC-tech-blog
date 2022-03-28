@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const dashboardRoutes = require('./dashBoardRoute');
+const dashboardRoutes = require('./dashboardRoute');
 const userRoutes=require('./userRoute');
 const postRoutes = require('./postRoute');
 const commentRoutes = require('./commentRoute');
